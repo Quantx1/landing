@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ArrowLeft, LayoutDashboard } from '@/lib/icons'
+import { appUrl } from '@/lib/app-url'
 
 export default function NotFound() {
   return (
@@ -24,7 +25,7 @@ export default function NotFound() {
             Go home
           </Link>
           <Link
-            href="/copilot"
+            href={appUrl('/copilot')}
             className="inline-flex items-center gap-2 rounded-md border border-line bg-wrap px-6 py-2.5 text-sm font-medium text-d-text-secondary transition hover:border-wrap-line hover:bg-wrap-hover hover:text-d-text-primary"
           >
             <LayoutDashboard className="h-4 w-4" />

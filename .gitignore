@@ -15,8 +15,10 @@ dist/
 downloads/
 eggs/
 .eggs/
-/lib/
-/lib64/
+# NOTE: the Python `/lib/` + `/lib64/` build-output rules that used to sit
+# here were inherited from the monorepo root config. This is a Next.js
+# repo where lib/ is application source, and the rule silently excluded
+# new files under it (lib/tools/*, lib/app-url.ts) from every commit.
 parts/
 sdist/
 var/
@@ -89,12 +91,12 @@ artifacts/models/*.safetensors
 *.csv
 *.parquet
 *.feather
-# PR 207 ??? exclude data/* contents but keep nse_tiers/ universe files
+# PR 207 — exclude data/* contents but keep nse_tiers/ universe files
 /data/*
 !ml/data/
 !/data/nse_tiers/
 !/data/nse_tiers/**
-# paper window ??? frozen pre-registered baselines MUST be tracked (the API
+# paper window — frozen pre-registered baselines MUST be tracked (the API
 # reads them at runtime; freezing means version control)
 !/data/paper/
 !/data/paper/**
@@ -136,6 +138,7 @@ _archive/
 output/
 
 # Build artifacts
+frontend/tsconfig.tsbuildinfo
 tsconfig.tsbuildinfo
 
 # Reference/inspiration site scrapes
@@ -162,6 +165,9 @@ data_audit.json
 data_quality_report.json
 smoke_*.json
 .env.bak
+# timestamped env backups (.env.local.bak-20260720 etc) — NEVER COMMIT
+.env*.bak*
+*.bak-*
 .playwright-mcp/
 .superpowers/
 
@@ -182,7 +188,7 @@ artifacts/cache/
 /*.jpeg
 
 # Local-only reference material (screenshots + design renders, not code).
-# competitor-research/ also holds CREDENTIALS.md ??? keep it out of git entirely.
+# competitor-research/ also holds CREDENTIALS.md — keep it out of git entirely.
 competitor-research/
 docs/superpowers/specs/v3-renders/
 

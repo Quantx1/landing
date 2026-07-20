@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { appUrl } from '@/lib/app-url'
 
 /**
  * Footer, v2. Honest + dead-link-free.
@@ -16,8 +17,8 @@ const columns = [
   {
     title: 'Product',
     links: [
-      { label: 'Trading Signals', href: '/signals' },
-      { label: 'Momentum Picks', href: '/momentum' },
+      { label: 'Trading Signals', href: appUrl('/signals') },
+      { label: 'Momentum Picks', href: appUrl('/momentum') },
       { label: 'Market Regime', href: '/proof?tab=regime' },
       { label: 'Model Accuracy', href: '/proof?tab=models' },
     ],
@@ -27,7 +28,7 @@ const columns = [
     links: [
       { label: 'Track Record', href: '/proof?tab=track-record' },
       { label: 'Pricing', href: '/pricing' },
-      { label: 'Stock Browser', href: '/stocks' },
+      { label: 'Stock Browser', href: appUrl('/stocks') },
     ],
   },
   {

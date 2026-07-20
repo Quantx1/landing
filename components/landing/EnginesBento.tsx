@@ -28,6 +28,7 @@ import {
   ArrowUpRight,
 } from '@/lib/icons'
 import type { LucideIcon } from '@/lib/icons'
+import { appUrl } from '@/lib/app-url'
 
 import { Reveal, RevealGroup, RevealItem } from './_reveal'
 
@@ -51,7 +52,7 @@ const CELLS: Cell[] = [
     kicker: 'The ML ranker',
     body: 'A machine-learning ranker that scores the whole NSE board by expected forward return: momentum, quality, mean-reversion. The top of the book feeds Signals, Momentum and AutoPilot.',
     icon: Layers,
-    href: '/signals',
+    href: appUrl('/signals'),
     span: 'lg:col-span-2 lg:row-span-2',
     signature: true,
     image: '/images/v3/ai-engines.webp',
@@ -70,7 +71,7 @@ const CELLS: Cell[] = [
     kicker: 'The news read',
     body: 'Scores Indian financial news per ticker. Tuned on how the local market actually talks.',
     icon: Newspaper,
-    href: '/stocks',
+    href: appUrl('/stocks'),
     span: 'lg:col-span-1',
     image: '/images/v3/ai-neural.webp',
   },
@@ -79,7 +80,7 @@ const CELLS: Cell[] = [
     kicker: 'The other side',
     body: 'Argues the bull and the bear case on every signal before it ships. You see what could go wrong.',
     icon: Scale,
-    href: '/signals',
+    href: appUrl('/signals'),
     span: 'lg:col-span-1',
     image: '/images/v3/ai-agents.webp',
   },
@@ -88,7 +89,7 @@ const CELLS: Cell[] = [
     kicker: 'Autonomous execution',
     body: 'Autonomously trades the top-ranked names on your own broker: Kelly sizing, daily rebalance, VIX overlay. Supervised. Hard stops stay authoritative.',
     icon: Crown,
-    href: '/signals',
+    href: appUrl('/signals'),
     span: 'lg:col-span-2',
     image: '/images/v3/ai-autopilot.webp',
   },
@@ -97,7 +98,7 @@ const CELLS: Cell[] = [
     kicker: 'The trading copilot',
     body: 'Ask anything about a stock, a signal or your book. Get real charts back, not chatbot fluff.',
     icon: MessageSquare,
-    href: '/assistant',
+    href: appUrl('/assistant'),
     span: 'lg:col-span-2',
     ai: true,
     image: '/images/v3/ai-copilot.webp',
@@ -107,7 +108,7 @@ const CELLS: Cell[] = [
     kicker: '50+ filters · 11 patterns',
     body: 'Sweep 1,800+ stocks for setups in real time. Breakout, momentum, OI, delivery surge. No match? Describe the setup, Copilot finds it.',
     icon: ScanSearch,
-    href: '/scanner-lab',
+    href: appUrl('/scanner-lab'),
     span: 'lg:col-span-2',
     image: '/images/v3/ai-scanner.webp',
   },
@@ -116,7 +117,7 @@ const CELLS: Cell[] = [
     kicker: 'The risk check',
     body: 'Know where your book breaks before it does. A multi-agent pass over exposure, concentration and momentum on your holdings.',
     icon: Stethoscope,
-    href: '/assistant',
+    href: appUrl('/assistant'),
     span: 'lg:col-span-2',
     image: '/images/v3/ai-risk.webp',
   },

@@ -15,6 +15,7 @@ import { Eye, GitBranch, ShieldCheck } from '@/lib/icons'
 import type { LucideIcon } from '@/lib/icons'
 
 import { Reveal, RevealGroup, RevealItem } from './_reveal'
+import { appUrl } from '@/lib/app-url'
 
 interface Pillar {
   icon: LucideIcon
@@ -43,7 +44,7 @@ const PILLARS: Pillar[] = [
     icon: ShieldCheck,
     title: 'Gated before it ships',
     body: 'No signal goes live until it clears a risk gate and a backtest. Hard stops stay authoritative on every trade.',
-    href: '/signals',
+    href: appUrl('/signals'),
     link: 'How signals work',
   },
 ]
