@@ -15,8 +15,10 @@ dist/
 downloads/
 eggs/
 .eggs/
-/lib/
-/lib64/
+# NOTE: the Python `/lib/` + `/lib64/` build-output rules that used to sit
+# here were inherited from the monorepo root config. This is a Next.js
+# repo where lib/ is application source, and the rule silently excluded
+# new files under it (lib/tools/*, lib/app-url.ts) from every commit.
 parts/
 sdist/
 var/

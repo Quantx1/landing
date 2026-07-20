@@ -19,10 +19,11 @@ const nextConfig = {
   },
   
   // ---------- Security headers ----------
-  // CSP is set per-request in middleware.ts so we can inject a fresh
-  // nonce on every response (drops 'unsafe-inline' from script-src).
-  // Other static security headers stay here — they don't need
-  // request-level customization.
+  // NOTE: this repo has no middleware.ts. The nonce-based CSP described here
+  // lives in the frontend repo and did not come across in the landing
+  // carve-out, so **no Content-Security-Policy is currently set on this
+  // site** — only the static headers below. Port frontend/middleware.ts here
+  // if the marketing site needs CSP too.
   async headers() {
     return [
       {
