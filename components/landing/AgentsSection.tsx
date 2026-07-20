@@ -23,6 +23,7 @@ import { MessageSquare, Scale, Crown, ShieldCheck, ArrowUpRight } from '@/lib/ic
 import type { LucideIcon } from '@/lib/icons'
 
 import { Reveal } from './_reveal'
+import { appUrl } from '@/lib/app-url'
 
 interface AgentItem {
   icon: LucideIcon
@@ -109,14 +110,14 @@ export default function AgentsSection() {
 
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
-                href="/assistant"
+                href={appUrl('/assistant')}
                 className="bg-gradient-cta group inline-flex items-center gap-2 rounded-pill px-5 py-2.5 text-[13.5px] font-semibold text-on-signature transition-transform active:scale-[0.97]"
               >
                 Talk to Copilot
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
               <Link
-                href="/signals"
+                href={appUrl('/signals')}
                 className="inline-flex items-center gap-2 rounded-pill border border-line px-5 py-2.5 text-[13.5px] font-medium text-d-text-primary transition-colors hover:bg-hover"
               >
                 See the agents argue

@@ -19,40 +19,41 @@ import {
   ScanLine,
   BarChart3,
   Brain,
-  Bot,
   Target,
-  Store,
-  Shield,
   Zap,
   ChevronDown,
+  Receipt,
+  Crosshair,
+  Repeat,
 } from '@/lib/icons'
 import { api } from '@/lib/api'
 import { ThemeToggleCompact } from '@/components/theme/ThemeToggle'
+import { appUrl } from '@/lib/app-url'
 
 /* ── Product mega-menu items (real routes preserved) ── */
 const productGroups = [
   {
     title: 'AI Signals',
     items: [
-      { icon: TrendingUp, label: 'Trading Signals', desc: 'AI entry / exit with stop-loss', href: '/signals' },
-      { icon: Target, label: 'Momentum Picks', desc: 'Alpha top-10 weekly', href: '/momentum' },
-      { icon: Zap, label: 'AI Swing Signal', desc: 'High-conviction setups', href: '/swingmax-signal' },
+      { icon: TrendingUp, label: 'Trading Signals', desc: 'AI entry / exit with stop-loss', href: appUrl('/signals') },
+      { icon: Target, label: 'Momentum Picks', desc: 'Alpha top-10 weekly', href: appUrl('/momentum') },
+      { icon: Zap, label: 'AI Swing Signal', desc: 'High-conviction setups', href: appUrl('/swingmax-signal') },
     ],
   },
   {
     title: 'AI Scanner',
     items: [
-      { icon: ScanLine, label: 'Pattern Scanner', desc: '11 chart patterns, 1,800+ stocks', href: '/scanner-lab?tab=patterns' },
-      { icon: BarChart3, label: 'Stock Screener', desc: '50+ real-time scanners', href: '/scanner-lab?tab=screeners' },
-      { icon: Brain, label: 'Stock Browser', desc: 'NSE-wide list with live regime', href: '/stocks' },
+      { icon: ScanLine, label: 'Pattern Scanner', desc: '11 chart patterns, 1,800+ stocks', href: appUrl('/scanner-lab?tab=patterns') },
+      { icon: BarChart3, label: 'Stock Screener', desc: '50+ real-time scanners', href: appUrl('/scanner-lab?tab=screeners') },
+      { icon: Brain, label: 'Stock Browser', desc: 'NSE-wide list with live regime', href: appUrl('/stocks') },
     ],
   },
   {
-    title: 'Tools & AI',
+    title: 'Free tools',
     items: [
-      { icon: Bot, label: 'AI Assistant', desc: 'Ask anything about the market', href: '/assistant' },
-      { icon: Shield, label: 'Backtest Engine', desc: 'Validate on 2+ years of data', href: '/analytics' },
-      { icon: Store, label: 'Marketplace', desc: 'Community strategies', href: '/marketplace' },
+      { icon: Receipt, label: 'Brokerage Calculator', desc: 'STT, GST and real break-even', href: '/tools/brokerage-calculator' },
+      { icon: Crosshair, label: 'Position Size', desc: 'Share quantity from your risk', href: '/tools/position-size-calculator' },
+      { icon: Repeat, label: 'All 12 calculators', desc: 'SIP, CAGR, capital gains and more', href: '/tools' },
     ],
   },
 ]

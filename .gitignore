@@ -137,6 +137,7 @@ output/
 
 # Build artifacts
 frontend/tsconfig.tsbuildinfo
+tsconfig.tsbuildinfo
 
 # Reference/inspiration site scrapes
 intellectia.ai/
@@ -162,6 +163,9 @@ data_audit.json
 data_quality_report.json
 smoke_*.json
 .env.bak
+# timestamped env backups (.env.local.bak-20260720 etc) — NEVER COMMIT
+.env*.bak*
+*.bak-*
 .playwright-mcp/
 .superpowers/
 

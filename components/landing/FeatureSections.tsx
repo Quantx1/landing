@@ -25,6 +25,7 @@ import { ArrowUpRight, Check } from '@/lib/icons'
 import { Reveal } from './_reveal'
 import { BrowserFrame } from './mockups/BrowserFrame'
 import { SignalMockup, ScannerMockup, CopilotMockup, DoctorMockup } from './mockups/Mockups'
+import { appUrl } from '@/lib/app-url'
 
 interface Feature {
   eyebrow: string
@@ -50,7 +51,7 @@ const FEATURES: Feature[] = [
     ),
     body: 'Machine-learning engines rank the board, Regime gates the tape, Mood reads the news, and Counterpoint argues the other side. No signal ships until they agree and the gate clears. Every call lands with an entry, a hard stop, a target and a reason in plain English.',
     points: ['Entry, stop, target on every call', 'Engine consensus plus confidence', 'Paper-trade any of them free'],
-    href: '/signals',
+    href: appUrl('/signals'),
     cta: 'Explore signals',
     url: 'quantx.app/signals',
     mockup: <SignalMockup />,
@@ -64,7 +65,7 @@ const FEATURES: Feature[] = [
     ),
     body: '50+ real-time screeners and 11 chart patterns run nonstop across the main board. Filter by breakout, momentum, delivery surge or fundamentals, or just describe the setup and let the AI find it. Found a match? Fire it straight to a signal, a chart or your watchlist.',
     points: ['50+ real-time screeners', '11 classic chart patterns', 'Describe a setup, AI finds it'],
-    href: '/scanner-lab',
+    href: appUrl('/scanner-lab'),
     cta: 'Open the AI Scanner',
     url: 'quantx.app/scanner-lab',
     mockup: <ScannerMockup />,
@@ -78,7 +79,7 @@ const FEATURES: Feature[] = [
     ),
     body: 'Your AI trading copilot reads the same ML engines and live data the rest of the app runs on. Ask why a stock moved, what a signal means, or where your book stands. It answers in plain English with real charts streamed inline. No chatbot fluff.',
     points: ['Grounded in live engine output', 'Streams real charts inline', 'Explains any signal on demand'],
-    href: '/assistant',
+    href: appUrl('/assistant'),
     cta: 'Meet Copilot',
     url: 'quantx.app/assistant',
     ai: true,
@@ -93,7 +94,7 @@ const FEATURES: Feature[] = [
     ),
     body: 'An AI agent runs a full pass over concentration, sector balance, momentum and drawdown risk. Graded, explained, grounded in real fundamentals. Know where the book breaks before the market does.',
     points: ['Concentration and sector checks', 'Momentum and drawdown risk', 'Grounded in real fundamentals'],
-    href: '/assistant',
+    href: appUrl('/assistant'),
     cta: 'Run a review',
     url: 'quantx.app/portfolio',
     mockup: <DoctorMockup />,

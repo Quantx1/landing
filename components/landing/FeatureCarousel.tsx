@@ -15,6 +15,7 @@ import Link from 'next/link'
 import { ArrowUpRight } from '@/lib/icons'
 
 import { Reveal } from './_reveal'
+import { appUrl } from '@/lib/app-url'
 
 interface Card {
   eyebrow: string
@@ -30,14 +31,14 @@ const CARDS: Card[] = [
     eyebrow: 'ML ensemble',
     title: 'AI Signals',
     body: 'A machine-learning ensemble has to agree before a signal reaches you. Entry, stop, target, and the reason in plain English.',
-    href: '/signals',
+    href: appUrl('/signals'),
     image: '/images/v3/ai-signal.webp',
   },
   {
     eyebrow: 'ML-ranked',
     title: 'Momentum',
     body: 'The NSE board, machine-trend-ranked. Refreshed every session, so you see what is moving now.',
-    href: '/signals/momentum',
+    href: appUrl('/signals/momentum'),
     image: '/images/v3/ai-momentum.webp',
   },
   {
@@ -51,21 +52,21 @@ const CARDS: Card[] = [
     eyebrow: 'News sentiment',
     title: 'Mood',
     body: 'AI reads the Indian financial news tape per ticker and scores it. The other side of the chart, on demand.',
-    href: '/stocks',
+    href: appUrl('/stocks'),
     image: '/images/v3/ai-neural.webp',
   },
   {
     eyebrow: 'Autonomous execution',
     title: 'AutoPilot',
     body: 'Autonomously runs the top-ranked names on your broker. Kelly sizing, hard stops, and you stay in control.',
-    href: '/signals',
+    href: appUrl('/signals'),
     image: '/images/v3/ai-autopilot.webp',
   },
   {
     eyebrow: 'Trading copilot',
     title: 'Copilot',
     body: 'Ask anything about a stock, a signal, or your book. Answered with live charts, not hand-waving.',
-    href: '/assistant',
+    href: appUrl('/assistant'),
     image: '/images/v3/ai-copilot.webp',
     ai: true,
   },
@@ -73,7 +74,7 @@ const CARDS: Card[] = [
     eyebrow: 'Multi-agent',
     title: 'Trading agents',
     body: 'Specialist AI agents argue the bull case against the bear case, then hand you the call and the why.',
-    href: '/assistant',
+    href: appUrl('/assistant'),
     image: '/images/v3/ai-agents.webp',
     ai: true,
   },
@@ -81,14 +82,14 @@ const CARDS: Card[] = [
     eyebrow: 'Real-time AI',
     title: 'AI Scanner',
     body: '50+ live screeners and 11 chart patterns sweep 1,800+ stocks in real time. The setup finds you.',
-    href: '/scanner-lab',
+    href: appUrl('/scanner-lab'),
     image: '/images/v3/ai-scanner.webp',
   },
   {
     eyebrow: 'AI risk agent',
     title: 'Portfolio Doctor',
     body: 'Know where your book breaks before it does. An AI-graded review of exposure, concentration, and drawdown risk.',
-    href: '/assistant',
+    href: appUrl('/assistant'),
     image: '/images/v3/ai-risk.webp',
   },
 ]
