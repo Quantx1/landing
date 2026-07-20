@@ -39,30 +39,42 @@ const nextConfig = {
     ]
   },
   
-  // Proxy API and WebSocket requests to the backend.
+  // Proxy API requests to the backend in local development.
   //
-  // Production builds (NODE_ENV=production, set by Vercel) MUST supply
-  // NEXT_PUBLIC_API_URL or the rewrites would silently target localhost
-  // and every API call from the deployed frontend would fail. Hard-fail
-  // the build so the misconfig is caught in CI, not by paying users.
+  // Cloudflare migration notes:
+  //
+  //  1. The `/ws/:path*` rewrite was REMOVED. Cloudflare Workers do not carry
+  //     an HTTP `Upgrade` handshake through the Next.js router, so proxying a
+  //     WebSocket through a rewrite cannot work there. Clients must connect
+  //     to the backend origin directly via NEXT_PUBLIC_WS_URL, which means
+  //     the backend needs CORS for this site's origin.
+  //
+  //  2. The build-time `throw` was downgraded to a warning. It existed to stop
+  //     a production build whose rewrites would silently point at localhost.
+  //     But landing's data components are all client-side with swallowed
+  //     errors (see IndexTicker.tsx / TrackRecordBar.tsx), so the site renders
+  //     fine with no backend — it just shows empty widgets. Hard-failing would
+  //     block deploying the marketing site before the API exists.
+  //
+  // With NEXT_PUBLIC_API_URL set to an absolute URL, lib/api.ts talks to the
+  // backend directly and these rewrites are never exercised in production.
   async rewrites() {
     const explicit = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL
     if (!explicit && process.env.NODE_ENV === 'production') {
-      throw new Error(
-        'NEXT_PUBLIC_API_URL is required for production builds. ' +
-        'Set it in the Vercel project settings (e.g. https://api.quantx.app) ' +
-        'before deploying.'
+      console.warn(
+        '\n[next.config] NEXT_PUBLIC_API_URL is not set for this production ' +
+        'build.\nThe site will render, but every live-data widget (ticker, ' +
+        'track record,\nproof panels) will be empty and the OG image will be ' +
+        'degraded.\nSet it in the Cloudflare Worker build environment once the ' +
+        'backend is live.\n'
       )
+      return []
     }
     const backendUrl = explicit || 'http://localhost:8000'
     return [
       {
         source: '/api/:path*',
         destination: `${backendUrl}/api/:path*`,
-      },
-      {
-        source: '/ws/:path*',
-        destination: `${backendUrl}/ws/:path*`,
       },
     ]
   },

@@ -195,3 +195,8 @@ docs/superpowers/specs/v3-renders/
 # Scratch session notes + old design-mockup renders (reference brands; local-only)
 /V3_RESUME_NOTES.md
 frontend/public/v3-mockups/
+
+# Cloudflare / OpenNext
+.open-next
+.wrangler
+.dev.vars

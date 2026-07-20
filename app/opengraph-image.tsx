@@ -15,7 +15,10 @@
 
 import { ImageResponse } from 'next/og'
 
-export const runtime = 'edge'
+// NOTE: `export const runtime = 'edge'` was removed for the Cloudflare
+// migration. @opennextjs/cloudflare runs the whole app on the Workers
+// *Node.js* runtime (via nodejs_compat) and requires the edge runtime
+// export to be absent — it is not the same thing as Vercel's edge runtime.
 // PR 111 — 10-minute cache. Hero data refreshes a few times per
 // market session; share-card crawlers (Twitter, WhatsApp, Slack)
 // re-fetch every few hours, so this is a safe trade-off between
