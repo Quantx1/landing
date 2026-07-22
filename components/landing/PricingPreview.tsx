@@ -30,7 +30,7 @@ const TIERS: Tier[] = [
     priceSub: 'forever',
     positioning: 'Trade every signal with a virtual ₹10,00,000 book. Zero risk.',
     bullets: [
-      '1 swing signal per day',
+      '1 Alpha Pick per day',
       'Paper portfolio + league',
       'Market regime + track record',
       'Copilot · 5 messages / day',
@@ -103,25 +103,18 @@ function TierCard({ tier }: { tier: Tier }) {
   return (
     <div
       className={[
-        'relative flex h-full flex-col overflow-hidden rounded-2xl border p-6',
-        popular ? 'border-transparent ring-line bg-wrap' : 'border-line bg-wrap',
+        'relative flex h-full flex-col rounded-[24px] bg-main p-2.5',
+        popular ? 'ring-1 ring-primary/30' : '',
       ].join(' ')}
     >
       {popular && (
-        <>
-          <span aria-hidden className="bg-gradient-signature absolute inset-x-0 top-0 h-[3px]" />
-          <span
-            aria-hidden
-            className="absolute inset-0 rounded-2xl"
-            style={{ boxShadow: 'inset 0 0 0 1px color-mix(in srgb, #00E6A7 38%, transparent)' }}
-          />
-          <span className="text-on-signature bg-gradient-signature absolute right-5 top-5 inline-flex items-center gap-1 rounded-pill px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide">
-            <Sparkles className="h-3 w-3" />
-            Popular
-          </span>
-        </>
+        <span className="text-on-signature bg-gradient-signature absolute right-5 top-5 z-10 inline-flex items-center gap-1 rounded-pill px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide">
+          <Sparkles className="h-3 w-3" />
+          Popular
+        </span>
       )}
 
+      <div className="flex flex-1 flex-col rounded-[18px] bg-wrap p-6">
       <div className="relative">
         <h3 className="font-mono text-[11px] uppercase tracking-[0.16em] text-d-text-muted">{tier.name}</h3>
         <div className="mt-2 flex items-baseline gap-1.5">
@@ -145,12 +138,13 @@ function TierCard({ tier }: { tier: Tier }) {
         className={[
           'relative block rounded-pill py-2.5 text-center text-[13px] font-semibold transition-transform active:scale-[0.97]',
           popular
-            ? 'bg-gradient-cta text-on-signature'
+            ? 'bg-gradient-cta cta-gloss text-on-signature'
             : 'border border-line text-d-text-primary hover:bg-hover',
         ].join(' ')}
       >
         {tier.ctaLabel}
       </Link>
+      </div>
     </div>
   )
 }

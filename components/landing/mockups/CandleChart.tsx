@@ -78,13 +78,13 @@ export function CandleChart({ className = '' }: { className?: string }) {
     >
       <defs>
         <linearGradient id="cc-area" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#00E6A7" stopOpacity="0.32" />
-          <stop offset="55%" stopColor="#22D3EE" stopOpacity="0.10" />
-          <stop offset="100%" stopColor="#22D3EE" stopOpacity="0" />
+          <stop offset="0%" stopColor="#6C4BF5" stopOpacity="0.32" />
+          <stop offset="55%" stopColor="#79A6FF" stopOpacity="0.10" />
+          <stop offset="100%" stopColor="#79A6FF" stopOpacity="0" />
         </linearGradient>
         <linearGradient id="cc-line" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#00E6A7" />
-          <stop offset="100%" stopColor="#22D3EE" />
+          <stop offset="0%" stopColor="#6C4BF5" />
+          <stop offset="100%" stopColor="#79A6FF" />
         </linearGradient>
         <filter id="cc-glow" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="3.4" result="b" />
@@ -111,7 +111,7 @@ export function CandleChart({ className = '' }: { className?: string }) {
       {/* candles */}
       {CANDLES.map((c, i) => {
         const up = c.c >= c.o
-        const color = up ? '#3FB950' : '#F85149'
+        const color = up ? '#2FBF8A' : '#F65D6D'
         const x = cx(i)
         const top = y(Math.max(c.o, c.c))
         const bottom = y(Math.min(c.o, c.c))
@@ -136,16 +136,16 @@ export function CandleChart({ className = '' }: { className?: string }) {
 
       {/* BUY marker */}
       <g transform={`translate(${cx(buyIdx)}, ${y(CANDLES[buyIdx].c)})`}>
-        <circle r="11" fill="#0b0b0c" stroke="#3FB950" strokeWidth="1.5" />
-        <circle r="4.5" fill="#3FB950" />
-        <text x="16" y="4" fontSize="11" fontWeight="700" fill="#3FB950" fontFamily="var(--font-mono)">BUY</text>
+        <circle r="11" fill="#0b0b0c" stroke="#2FBF8A" strokeWidth="1.5" />
+        <circle r="4.5" fill="#2FBF8A" />
+        <text x="16" y="4" fontSize="11" fontWeight="700" fill="#2FBF8A" fontFamily="var(--font-mono)">BUY</text>
       </g>
 
       {/* SELL marker */}
       <g transform={`translate(${cx(sellIdx)}, ${y(CANDLES[sellIdx].h) - 6})`}>
-        <circle r="11" fill="#0b0b0c" stroke="#F85149" strokeWidth="1.5" />
-        <circle r="4.5" fill="#F85149" />
-        <text x="-46" y="4" fontSize="11" fontWeight="700" fill="#F85149" fontFamily="var(--font-mono)">SELL</text>
+        <circle r="11" fill="#0b0b0c" stroke="#F65D6D" strokeWidth="1.5" />
+        <circle r="4.5" fill="#F65D6D" />
+        <text x="-46" y="4" fontSize="11" fontWeight="700" fill="#F65D6D" fontFamily="var(--font-mono)">SELL</text>
       </g>
     </svg>
   )

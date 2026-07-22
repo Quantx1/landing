@@ -38,9 +38,9 @@ type LiveData = {
 }
 
 const REGIME_COLORS: Record<string, string> = {
-  bull: '#05B878',
-  sideways: '#FEB113',
-  bear: '#FF5947',
+  bull: '#10B981',
+  sideways: '#F0A94F',
+  bear: '#F5808C',
 }
 
 
@@ -104,7 +104,7 @@ async function fetchLiveData(): Promise<LiveData> {
 
 export default async function OgImage() {
   const { regime, signal } = await fetchLiveData()
-  const regimeColor = regime ? REGIME_COLORS[regime.name] : '#4FECCD'
+  const regimeColor = regime ? REGIME_COLORS[regime.name] : '#8FB0FF'
 
   return new ImageResponse(
     (
@@ -114,7 +114,7 @@ export default async function OgImage() {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          background: 'linear-gradient(135deg, #0A0D14 0%, #131722 60%, #0A0D14 100%)',
+          background: 'linear-gradient(135deg, #0D0D0E 0%, #151517 60%, #0D0D0E 100%)',
           color: '#FFFFFF',
           padding: '80px',
           fontFamily: 'sans-serif',
@@ -130,10 +130,10 @@ export default async function OgImage() {
             width: '500px',
             height: '500px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(79,236,205,0.18) 0%, transparent 60%)',
+            background: 'radial-gradient(circle, rgba(82,144,244,0.18) 0%, transparent 60%)',
           }}
         />
-        {/* Purple accent blob */}
+        {/* Blue accent blob */}
         <div
           style={{
             position: 'absolute',
@@ -142,7 +142,7 @@ export default async function OgImage() {
             width: '420px',
             height: '420px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(141,92,255,0.14) 0%, transparent 60%)',
+            background: 'radial-gradient(circle, rgba(64,106,228,0.14) 0%, transparent 60%)',
           }}
         />
 
@@ -195,13 +195,13 @@ export default async function OgImage() {
               width: '44px',
               height: '44px',
               borderRadius: '12px',
-              background: 'linear-gradient(135deg, #4FECCD 0%, #5DCBD8 100%)',
+              background: 'linear-gradient(135deg, #5290F4 0%, #406AE4 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: '22px',
               fontWeight: 700,
-              color: '#0A0D14',
+              color: '#FFFFFF',
             }}
           >
             Q
@@ -243,7 +243,7 @@ export default async function OgImage() {
               fontWeight: 600,
               lineHeight: 1.05,
               letterSpacing: '-0.02em',
-              color: '#4FECCD',
+              color: '#8FB0FF',
             }}
           >
             for Indian traders.
@@ -278,8 +278,8 @@ export default async function OgImage() {
                   gap: '14px',
                   padding: '14px 22px',
                   borderRadius: '14px',
-                  border: '1px solid rgba(79,236,205,0.30)',
-                  background: 'rgba(79,236,205,0.08)',
+                  border: '1px solid rgba(143,176,255,0.30)',
+                  background: 'rgba(143,176,255,0.08)',
                 }}
               >
                 <div
@@ -313,7 +313,7 @@ export default async function OgImage() {
                   style={{
                     fontSize: '20px',
                     fontWeight: 600,
-                    color: signal.direction === 'LONG' ? '#05B878' : '#FF5947',
+                    color: signal.direction === 'LONG' ? '#10B981' : '#F5808C',
                     letterSpacing: '0.04em',
                   }}
                 >
@@ -332,11 +332,11 @@ export default async function OgImage() {
                 alignItems: 'center',
               }}
             >
-              <Stat value="NSE" label="NSE-native" accent="#4FECCD" />
+              <Stat value="NSE" label="NSE-native" accent="#8FB0FF" />
               <div style={{ width: '1px', height: '40px', background: 'rgba(255,255,255,0.12)' }} />
               <Stat value="3 tiers" label="Free / Pro / Elite" accent="#FFFFFF" />
               <div style={{ width: '1px', height: '40px', background: 'rgba(255,255,255,0.12)' }} />
-              <Stat value="Public" label="Track record" accent="#5DCBD8" />
+              <Stat value="Public" label="Track record" accent="#8FB0FF" />
             </div>
           )}
         </div>

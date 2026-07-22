@@ -16,6 +16,7 @@ import {
 import LightNavbar from '@/components/landing/LightNavbar'
 import Footer from '@/components/landing/Footer'
 import FeatureComparisonMatrix from '@/components/pricing/FeatureComparisonMatrix'
+import { AI } from '@/lib/tokens'
 
 /* ========================================================================== */
 /* TYPES                                                                      */
@@ -93,7 +94,7 @@ const STATIC_PLANS = [
     icon: Sparkles,
     features: [
       'Paper AutoPilot trades a virtual portfolio for you',
-      '1 swing signal / day',
+      '1 Alpha Pick / day',
       'Copilot 5 messages / day',
       'Paper trading + League',
       'Watchlist (5 symbols)',
@@ -274,7 +275,7 @@ export default function PricingPage() {
         order_id: data.order_id,
         handler: async (response: RazorpayResponse) => { await handlePaymentSuccess(response) },
         prefill: { name: user.full_name || '', email: user.email || '', contact: user.phone || '' },
-        theme: { color: '#4FECCD' },
+        theme: { color: AI },
       }
       const razorpay = new window.Razorpay(options)
       razorpay.open()
@@ -327,7 +328,7 @@ export default function PricingPage() {
               onClick={() => setBillingPeriod(period)}
               className={`rounded-full px-6 py-2 text-sm font-medium transition-all ${
                 billingPeriod === period
-                  ? 'bg-primary text-d-bg shadow-sm'
+                  ? 'glass-control-accent'
                   : 'text-d-text-secondary hover:text-d-text-primary'
               }`}
             >
@@ -369,12 +370,12 @@ export default function PricingPage() {
             return (
               <div
                 key={plan.id}
-                className={`relative rounded-2xl border p-8 transition-all duration-300 ${
+                className={`relative rounded-[24px] bg-main p-2.5 transition-all duration-300 ${
                   isRecommended
-                    ? 'border-highlight bg-d-bg-card shadow-glass-lg ring-1 ring-highlight/30'
+                    ? 'ring-1 ring-highlight/40'
                     : isPopular
-                      ? 'border-primary bg-d-bg-card shadow-glass-lg ring-1 ring-primary/20'
-                      : 'border-d-border bg-d-bg-card shadow-glass hover:shadow-glass-hover'
+                      ? 'ring-1 ring-primary/30'
+                      : ''
                 }`}
               >
                 {/* PR 115 — recommended takes badge precedence over
@@ -389,6 +390,7 @@ export default function PricingPage() {
                   </div>
                 ) : null}
 
+                <div className="flex h-full flex-col rounded-[18px] bg-wrap p-6">
                 <div className="mb-6">
                   <div className="mb-2 flex items-center gap-2">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
@@ -413,7 +415,7 @@ export default function PricingPage() {
                   )}
                 </div>
 
-                <ul className="mb-8 space-y-3">
+                <ul className="mb-8 flex-1 space-y-3">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-2.5 text-sm text-d-text-secondary">
                       <Check className="h-4 w-4 shrink-0 text-primary" />
@@ -439,12 +441,14 @@ export default function PricingPage() {
                     else router.push('/signup')
                   }}
                   disabled={loading && processingPlanId === plan.id}
-                  className={`flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold transition-all ${
+                  className={`flex w-full items-center justify-center gap-2 rounded-pill py-3 text-sm font-semibold transition-all ${
                     isCurrent
                       ? 'cursor-not-allowed bg-hover text-d-text-muted'
                       : plan.price === 0
-                      ? 'border border-d-border bg-d-bg-card text-d-text-primary hover:bg-hover'
-                      : 'bg-primary text-d-bg hover:bg-primary-hover hover:shadow-glow-primary'
+                      ? 'glass-control text-d-text-primary'
+                      : isPopular
+                      ? 'glass-control-accent'
+                      : 'glass-control-accent'
                   }`}
                 >
                   {loading && processingPlanId === plan.id ? (
@@ -459,6 +463,7 @@ export default function PricingPage() {
                     </>
                   )}
                 </button>
+                </div>
               </div>
             )
           })}
