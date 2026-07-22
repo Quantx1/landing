@@ -106,7 +106,7 @@ function PublicHeader() {
           <Link href="/pricing" className="hover:text-d-text-primary">Pricing</Link>
           <Link
             href="/signup"
-            className="px-3 py-1.5 bg-primary text-main rounded-sm hover:bg-primary-hover transition-colors font-medium"
+            className="px-3 py-1.5 bg-primary text-primary-foreground rounded-sm hover:bg-primary-hover transition-colors font-medium"
           >
             Start free
           </Link>

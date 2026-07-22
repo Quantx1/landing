@@ -40,12 +40,13 @@ export function generateStaticParams() {
  * prediction stream, no retrain controls). Crawlable + SSG (see
  * generateStaticParams above), used in the trust-moat narrative.
  */
-export default function PublicModelPage({
+export default async function PublicModelPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const engine = getEngineBySlug(params.slug)
+  const { slug } = await params
+  const engine = getEngineBySlug(slug)
   if (!engine) notFound()
 
   return (

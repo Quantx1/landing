@@ -38,7 +38,7 @@ const CARDS: Card[] = [
     eyebrow: 'ML-ranked',
     title: 'Momentum',
     body: 'The NSE board, machine-trend-ranked. Refreshed every session, so you see what is moving now.',
-    href: appUrl('/signals/momentum'),
+    href: appUrl('/signals/momentum-picks'),
     image: '/images/v3/ai-momentum.webp',
   },
   {

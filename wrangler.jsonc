@@ -1,0 +1,70 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "quantx-landing",
+  "compatibility_date": "2025-03-25",
+
+  // `nodejs_compat` is required — @opennextjs/cloudflare runs Next on the
+  // Workers *Node.js* runtime, not the edge runtime.
+  // `global_fetch_strictly_public` makes fetch() to your own domain go back
+  // out through the public internet, matching Node/Vercel semantics.
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+
+  // Self-reference, needed by the ISR revalidation queue below.
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "quantx-landing"
+    }
+  ],
+
+  // Incremental cache for app/opengraph-image.tsx (`revalidate = 600`).
+  // Without this the OG card regenerates on every crawler hit and each hit
+  // fans out two backend fetches.
+  //
+  // Using KV rather than R2 because R2 is not enabled on this Cloudflare
+  // account (API error 10042 — it needs switching on in the dashboard with a
+  // payment method). Tradeoff: KV is eventually consistent, so a revalidated
+  // OG card can serve stale for a short window. OpenNext's docs prefer R2.
+  // To switch later: enable R2, `wrangler r2 bucket create quantx-landing-cache`,
+  // replace this block with an `r2_buckets` binding named
+  // NEXT_INC_CACHE_R2_BUCKET, and swap the override in open-next.config.ts.
+  "kv_namespaces": [
+    {
+      "binding": "NEXT_INC_CACHE_KV",
+      "id": "5fc26c7d34184d4996155986b46eebff"
+    }
+  ],
+
+  // Durable Object queue that de-duplicates time-based revalidations.
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "NEXT_CACHE_DO_QUEUE",
+        "class_name": "DOQueueHandler"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["DOQueueHandler"]
+    }
+  ],
+
+  // Powers next/image. Cloudflare Images is billed separately — at this
+  // site's volume (4 image call sites) it should sit in the free allowance,
+  // but check pricing before turning on heavy usage.
+  "images": {
+    "binding": "IMAGES"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+}

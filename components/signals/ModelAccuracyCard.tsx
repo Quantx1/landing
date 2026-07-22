@@ -38,37 +38,37 @@ interface Props {
 const IDENTITY: Record<string, { label: string; color: string; description: string }> = {
   tft_swing: {
     label: 'Forecast',
-    color: '#4FECCD',
+    color: 'var(--color-primary-text)',
     description: 'Swing forecast engine — 5-day quantile outlook with p10/p50/p90 bands.',
   },
   qlib_alpha158: {
     label: 'Alpha',
-    color: '#5DCBD8',
+    color: 'var(--color-primary-text)',
     description: 'Cross-sectional alpha ranker — nightly sieve across NSE.',
   },
   lgbm_signal_gate: {
     label: 'Gate',
-    color: '#FFD166',
+    color: 'var(--color-warning)',
     description: '3-class signal gate — buy / hold / sell verdict on every candidate.',
   },
   regime_hmm: {
     label: 'Regime',
-    color: '#FF9900',
+    color: 'var(--color-warning)',
     description: 'Market regime detector — bull / sideways / bear with daily updates.',
   },
   strategy: {
     label: 'Strategy confluence',
-    color: '#4FECCD',
+    color: 'var(--color-primary-text)',
     description: 'Rule-based strategy vote (breakouts, pullbacks, reversals, structure, volume).',
   },
   breakout_meta_labeler: {
     label: 'PatternScope',
-    color: '#00E5CC',
+    color: 'var(--color-cyan)',
     description: 'Pattern quality scorer — Scanner Lab tag.',
   },
   finbert_india: {
     label: 'Mood',
-    color: '#05B878',
+    color: 'var(--color-up)',
     description: 'News sentiment engine — NSE-tuned for financial text.',
   },
   // v1 scope locked 2026-05-17 — vix_tft / chronos2_macro / options_rl /
@@ -79,7 +79,7 @@ const IDENTITY: Record<string, { label: string; color: string; description: stri
 export default function ModelAccuracyCard(props: Props) {
   const id = IDENTITY[props.modelName] || {
     label: props.modelName,
-    color: '#8E8E8E',
+    color: 'var(--color-muted)',
     description: '',
   }
   const pct = props.winRate !== null ? Math.max(0, Math.min(1, props.winRate)) : null
@@ -88,7 +88,7 @@ export default function ModelAccuracyCard(props: Props) {
 
   return (
     <div
-      className="trading-surface flex flex-col gap-3 min-h-[200px]"
+      className="trading-surface !rounded-[20px] flex flex-col gap-3 min-h-[200px]"
       style={{ borderLeft: `3px solid ${id.color}` }}
     >
       {/* Header */}
@@ -104,7 +104,7 @@ export default function ModelAccuracyCard(props: Props) {
         </div>
         {props.status && (
           <span
-            className={`px-1.5 py-0.5 rounded text-[9px] font-semibold uppercase tracking-wider ${
+            className={`px-2 py-0.5 rounded-full text-[9px] font-semibold uppercase tracking-wider ${
               props.status === 'prod'
                 ? 'bg-up/10 border border-up/30 text-up'
                 : 'bg-warning/10 border border-warning/30 text-warning'

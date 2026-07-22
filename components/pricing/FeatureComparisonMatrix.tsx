@@ -118,15 +118,15 @@ export default function FeatureComparisonMatrix() {
   return (
     <section className="max-w-6xl mx-auto px-4 md:px-6 py-16">
       <div className="text-center mb-8">
-        <h2 className="text-[24px] font-semibold text-white">Full feature comparison</h2>
+        <h2 className="font-display text-[24px] font-semibold text-d-text-primary">Full feature comparison</h2>
         <p className="text-[12px] text-d-text-muted mt-1.5">
           Every feature, every tier. If it isn&apos;t here, it isn&apos;t in the product yet.
         </p>
       </div>
 
-      <div className="rounded-2xl border border-d-border bg-wrap/70 backdrop-blur-sm overflow-hidden">
+      <div className="rounded-[24px] border border-line bg-wrap overflow-hidden">
         {/* Sticky header row */}
-        <div className="grid grid-cols-[1fr_90px_90px_90px] md:grid-cols-[2fr_120px_120px_120px] gap-2 px-4 md:px-6 py-3 border-b border-d-border sticky top-0 bg-wrap/95 backdrop-blur-sm z-10">
+        <div className="grid grid-cols-[1fr_90px_90px_90px] md:grid-cols-[2fr_120px_120px_120px] gap-2 px-4 md:px-6 py-3 border-b border-line sticky top-0 bg-wrap/95 backdrop-blur-sm z-10">
           <span className="text-[11px] uppercase tracking-wider text-d-text-muted">Feature</span>
           <TierHeaderCell label="Free" />
           <TierHeaderCell label="Pro" highlight="popular" />
@@ -136,12 +136,12 @@ export default function FeatureComparisonMatrix() {
         {GROUPS.map((group) => {
           const open = openGroups[group.label]
           return (
-            <div key={group.label} className="border-b border-d-border last:border-0">
+            <div key={group.label} className="border-b border-line last:border-0">
               <button
                 onClick={() => toggle(group.label)}
-                className="w-full flex items-center justify-between gap-2 px-4 md:px-6 py-3 text-left hover:bg-white/[0.02] transition-colors"
+                className="w-full flex items-center justify-between gap-2 px-4 md:px-6 py-3 text-left hover:bg-hover transition-colors"
               >
-                <span className="text-[12px] font-semibold text-white">
+                <span className="text-[12px] font-semibold text-d-text-primary">
                   {group.label}
                   <span className="ml-2 text-[10px] text-d-text-muted numeric font-normal">
                     {group.rows.length}
@@ -157,7 +157,7 @@ export default function FeatureComparisonMatrix() {
                   {group.rows.map((row) => (
                     <div
                       key={row.key}
-                      className="grid grid-cols-[1fr_90px_90px_90px] md:grid-cols-[2fr_120px_120px_120px] gap-2 px-4 md:px-6 py-2.5 items-center text-[12px] border-t border-d-border/60 first:border-t-0"
+                      className="grid grid-cols-[1fr_90px_90px_90px] md:grid-cols-[2fr_120px_120px_120px] gap-2 px-4 md:px-6 py-2.5 items-center text-[12px] border-t border-line/60 first:border-t-0"
                     >
                       <div className="min-w-0">
                         <span className="text-d-text-primary">{row.feature}</span>
@@ -188,11 +188,11 @@ export default function FeatureComparisonMatrix() {
 function TierHeaderCell({ label, highlight }: { label: string; highlight?: 'popular' | 'gold' }) {
   const color =
     highlight === 'gold'
-      ? 'linear-gradient(135deg, #FFD166, #FF9900)'
+      ? 'var(--color-warning)'
       : highlight === 'popular'
-      ? '#4FECCD'
-      : '#8E8E8E'
-  const textColor = highlight === 'gold' ? '#FFD166' : highlight === 'popular' ? '#4FECCD' : '#DADADA'
+      ? 'var(--color-primary)'
+      : 'var(--color-muted)'
+  const textColor = highlight === 'gold' ? 'var(--color-warning)' : highlight === 'popular' ? 'var(--color-primary-text)' : 'var(--color-desc)'
   return (
     <span className="text-center">
       <span className="block text-[11px] uppercase tracking-wider font-semibold" style={{ color: textColor }}>
@@ -217,7 +217,7 @@ function ValueCell({
   tier: Tier
 }) {
   if (value === true) {
-    const color = tier === 'free' ? '#8E8E8E' : tier === 'pro' ? '#4FECCD' : '#FFD166'
+    const color = tier === 'free' ? 'var(--color-muted)' : tier === 'pro' ? 'var(--color-primary-text)' : 'var(--color-warning)'
     return (
       <span className="text-center">
         <Check className="inline-block w-3.5 h-3.5" style={{ color }} />
@@ -233,7 +233,7 @@ function ValueCell({
   }
   // Custom string
   const color =
-    tier === 'free' ? '#DADADA' : tier === 'pro' ? '#4FECCD' : '#FFD166'
+    tier === 'free' ? 'var(--color-desc)' : tier === 'pro' ? 'var(--color-primary-text)' : 'var(--color-warning)'
   return (
     <span className="text-center block text-[11px] font-medium" style={{ color }}>
       {value}

@@ -18,11 +18,12 @@ import {
  * as the trust-moat exhibit on the landing page + during sales
  * conversations. (Content still a stub — wired to real data in Plan 3.)
  */
-export default function TrackRecordDetailPage({
+export default async function TrackRecordDetailPage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
+  const { id } = await params
   return (
     <div className="mx-auto max-w-4xl space-y-6 px-6 py-12">
       <Link
@@ -34,7 +35,7 @@ export default function TrackRecordDetailPage({
       </Link>
 
       <header className="space-y-1">
-        <EyebrowMono>Closed signal · {params.id}</EyebrowMono>
+        <EyebrowMono>Closed signal · {id}</EyebrowMono>
         <h1 className="heading-display text-2xl font-normal text-d-text-primary">
           <Skeleton w="220px" h="28px" className="inline-block" />
         </h1>

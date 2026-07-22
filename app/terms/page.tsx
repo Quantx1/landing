@@ -19,13 +19,13 @@ export default function TermsOfServicePage() {
 
           <section>
             <h2 className="text-lg font-semibold text-l-text mb-3">2. SEBI Regulatory Status</h2>
-            <p className="font-medium text-yellow-400/90">
+            <p className="font-medium text-warning/90">
               <strong>SEBI Registration:</strong> Quant X is currently operating as a technology
               platform pending SEBI Research Analyst registration. Reg # &lt;PENDING — to be inserted post-approval&gt;.
               All trading signals are general-market research, NOT personalised investment advice.
               Each user is responsible for assessing suitability based on their own risk profile.
             </p>
-            <p className="mt-3 font-medium text-yellow-400/90">
+            <p className="mt-3 font-medium text-warning/90">
               Quant X is a technology platform that provides algorithmic trading signals and tools.
               It does NOT provide personalised investment advice, portfolio management, or brokerage
               services. All trading decisions are made solely by you. Past performance does not
